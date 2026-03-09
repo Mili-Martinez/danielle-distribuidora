@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danielle Distribuidora</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="icon" type="image/x-icon" href="/imagenes/Logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/ewd1wjo.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <style type="text/tailwindcss">
+    @theme {
+     --text-10xl: 10rem;
+     --color-golden-yellow: #ffe401;
+     --color-dark-orange: #ff9101;
+     --color-bright-turquoise: #00dbee;
+     --color-indigo-danielle: #5200bc;
+     --color-lavander-rose: #ffbaff;
+     --color-torch-red: #f4032d;
+		 --color-green-yellow: #a6fe5a;
+		 --color-mosque: #085e55;
+   }
+	</style>
+  <style>
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: flex !important;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      top: 85%;
+      /* las baja, probá con otro % si querés más o menos */
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.4);
+      /* opcional: fondo para contraste */
+      border-radius: 50%;
+      z-index: 10;
+      color: white;
+    }
+
+    /* Tailwind personalizada */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE y Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
+</head>
+
+<body class="selection:bg-torch-red selection:text-white">
+  <header id="main-header"
+    class="flex items-center p-4 bg-white shadow-md fixed w-full top-0 z-50 transition-transform duration-300 transform translate-y-0">
+    <nav class="flex justify-between items-center w-[90%] max-w-7xl mx-auto relative cursor-default">
+      <!-- Logo -->
+      <img src="/imagenes/Danielle-2.png" alt="Danielle Distribuidora" class="h-10 md:h-12">
+
+      <!-- Controles derecha Móvil (Menu) -->
+      <div class="flex items-center gap-4 xl:hidden z-50">
+        <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"
+          class="text-gray-700 text-[26px] transition-colors cursor-pointer hover:text-indigo-danielle">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+
+      <!-- Buscador (Oculto en móvil) -->
+      <div class="relative w-full max-w-md hidden xl:block">
+        <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        <input type="text" name="buscar" id="buscar" placeholder="Buscar..." aria-label="Buscar productos"
+          class="pl-10 border border-gray-300 font-[archivo] rounded-lg px-4 py-2 text-sm w-full placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-danielle/40 text-gray-700">
+      </div>
+
+      <!-- Enlaces Desktop (Sin saltos de Layout) -->
+      <div class="hidden xl:flex space-x-6 font-[archivo] text-gray-700 items-center">
+        <!-- En lugar de hover:font-semibold, usamos un sutil cambio de color y bajada de opacidad -->
+        <a href="#"
+          class="relative text-gray-700 hover:text-indigo-danielle transition-all duration-300 overflow-hidden group">
+          Productos
+          <span
+            class="absolute left-0 bottom-0 w-full h-[2px] bg-indigo-danielle -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+        </a>
+        <a href="#"
+          class="relative text-gray-700 hover:text-indigo-danielle transition-all duration-300 overflow-hidden group">
+          Mayorista
+          <span
+            class="absolute left-0 bottom-0 w-full h-[2px] bg-indigo-danielle -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+        </a>
+        <a href="#"
+          class="relative text-gray-700 hover:text-indigo-danielle transition-all duration-300 overflow-hidden group">
+          Nosotros
+          <span
+            class="absolute left-0 bottom-0 w-full h-[2px] bg-indigo-danielle -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+        </a>
+        <a href="#"
+          class="relative text-gray-700 hover:text-indigo-danielle transition-all duration-300 overflow-hidden group">
+          Contacto
+          <span
+            class="absolute left-0 bottom-0 w-full h-[2px] bg-indigo-danielle -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+        </a>
+        <div class="flex items-center space-x-6 pl-2">
+          <!-- Carrito Desktop -->
+          <a href="#" aria-label="Ver carrito"
+            class="text-gray-700 hover:text-indigo-danielle transition-colors text-[20px]">
+            <i class="ph ph-shopping-cart"></i>
+          </a>
+          <!-- Favoritos Desktop -->
+          <a href="#" aria-label="Ver favoritos"
+            class="text-gray-700 hover:text-torch-red transition-colors text-[20px]">
+            <i class="ph ph-heart"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Panel menú mobile animado -->
+      <div id="mobileMenu"
+        class="fixed top-0 right-0 w-[85%] sm:w-[50%] h-[100dvh] bg-indigo-danielle/95 backdrop-blur-md px-6 pt-24 pb-6 flex flex-col gap-5 font-[archivo] text-white text-xl xl:hidden transform translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl overflow-y-auto">
+
+        <!-- Buscador Mobile -->
+        <div class="relative w-full mb-2">
+          <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-300"></i>
+          <input type="text" name="buscar-mobile" id="buscar-mobile" placeholder="Buscar..."
+            aria-label="Buscar productos"
+            class="pl-10 border border-white/30 bg-white/10 font-[archivo] rounded-lg px-4 py-3 text-sm w-full placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white text-white shadow-inner">
+        </div>
+
+        <a href="#" class="block hover:text-gray-200 transition-colors text-right relative group">
+          Productos
+          <span
+            class="absolute right-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#" class="block hover:text-gray-200 transition-colors text-right relative group">
+          Mayorista
+          <span
+            class="absolute right-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#" class="block hover:text-gray-200 transition-colors text-right relative group">
+          Nosotros
+          <span
+            class="absolute right-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#" class="block hover:text-gray-200 transition-colors text-right relative group">
+          Contacto
+          <span
+            class="absolute right-0 bottom-0 w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+        </a>
+
+        <!-- Separador -->
+        <div class="w-full h-px bg-white/20 my-1"></div>
+
+        <!-- Carrito y Favoritos Mobile -->
+        <a href="#" class="flex justify-end items-center gap-3 hover:text-gray-200 transition-colors relative group">
+          Carrito <i class="ph ph-shopping-cart text-[26px]"></i>
+        </a>
+        <a href="#" class="flex justify-end items-center gap-3 hover:text-torch-red transition-colors relative group">
+          Favoritos <i class="ph ph-heart text-[26px]"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <!--Main-->
+  <main class="flex items-center w-[90%] max-w-7xl mx-auto my-12 h-120 relative overflow-hidden mt-28">
+    <div class="w-full h-full rounded-2xl inset-0 bg-cover bg-center bg-no-repeat brightness-30"
+      style="background-image: url(https://images.pexels.com/photos/5464960/pexels-photo-5464960.jpeg);"></div>
+    <div class="flex flex-col items-center justify-center h-full text-white absolute inset-0 z-10 px-4">
+      <h1
+        class="lg:text-7xl md:text-6xl text-4xl font-semibold mb-2 font-[chaloops] text-center fade-in-hero opacity-0 translate-y-8 transition-all duration-700 ease-out delay-100">
+        Creá, explorá, aprendé</h1>
+      <p class="text-sm md:text-xl md:pt-2 lg:pt-4 mb-6 font-[archivo] tracking-wider text-center fade-in-hero opacity-0 translate-y-8 transition-all duration-700 ease-out delay-300"
+        style="font-variation-settings: 'wdth' 75;">Tenemos todo lo que necesitás para acompañarte en cada paso</p>
+      <button
+        class="flex items-center gap-2 bg-torch-red/90 text-white px-7 py-3 text-lg font-[archivo] rounded-xl hover:bg-torch-red hover:-translate-y-1 hover:shadow-lg hover:shadow-torch-red/30 active:translate-y-0 active:shadow-md transition-all duration-300 ease-in-out cursor-pointer tracking-wider group fade-in-hero opacity-0 translate-y-8 transition-all duration-700 ease-out delay-500">
+        <i class="ph ph-bag group-hover:rotate-12 transition-transform duration-300"></i>Ver Productos
+      </button>
+    </div>
+  </main>
+  <!--Categorias-->
+  <section
+    class="w-[90%] max-w-7xl mx-auto py-10 relative fade-in-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
+    <h2 class="text-4xl font-semibold font-[chaloops] text-center mb-12 text-gray-800">Categorías</h2>
+
+    <!-- Flechas visibles en Mobile y Desktop -->
+    <button id="prev" aria-label="Categoría anterior"
+      class="flex items-center justify-center absolute -left-2 md:-left-5 top-[62%] -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm shadow-lg shadow-gray-300/50 w-10 h-10 md:w-11 md:h-11 rounded-full hover:bg-gray-50 hover:scale-105 transition-all cursor-pointer">
+      <i class="ph ph-arrow-left text-xl md:text-2xl"></i>
+    </button>
+    <button id="next" aria-label="Categoría siguiente"
+      class="flex items-center justify-center absolute -right-2 md:-right-5 top-[62%] -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm shadow-lg shadow-gray-300/50 w-10 h-10 md:w-11 md:h-11 rounded-full hover:bg-gray-50 hover:scale-105 transition-all cursor-pointer">
+      <i class="ph ph-arrow-right text-xl md:text-2xl"></i>
+    </button>
+
+    <!-- Carrusel -->
+    <div id="carousel" class="flex overflow-x-auto gap-6 scroll-smooth snap-x snap-mandatory px-2 md:px-8 no-scrollbar">
+      <!-- Tarjetas -->
+      <!-- Librería -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://images.unsplash.com/photo-1612599316791-451087c7fe15?q=80&w=1424&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Librería"
+          class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 brightness-90 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Librería</h3>
+        </div>
+      </a>
+      <!-- Juguetería -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://images.pexels.com/photos/19599295/pexels-photo-19599295/free-photo-of-tienda-juguetes-almacenar-escuter.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Juguetería"
+          class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 brightness-90 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Juguetería</h3>
+        </div>
+      </a>
+      <!-- Nuevos Ingresos -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://www.everich.com/wp-content/uploads/2024/05/Insulated-Water-Bottles-Manufacturer-in-china-1536x494.webp"
+          alt="Nuevos ingresos"
+          class="w-full h-64 object-cover object-top group-hover:scale-110 transition-transform duration-700 brightness-80 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Nuevos Ingresos</h3>
+        </div>
+      </a>
+      <!-- Cotillón -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://images.unsplash.com/photo-1581509756622-8d74eee78b52?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Cotillón"
+          class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 brightness-80 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Cotillón</h3>
+        </div>
+      </a>
+      <!-- Marroquinería -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://images.unsplash.com/photo-1526736068954-3d647ef94973?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Marroquinería"
+          class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 brightness-80 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Marroquinería</h3>
+        </div>
+      </a>
+      <!-- Mayorista -->
+      <a href="#"
+        class="min-w-[60%] sm:min-w-[40%] md:min-w-[33%] lg:min-w-[28%] h-50 snap-start group relative overflow-hidden rounded-2xl shadow-lg transition duration-300">
+        <img
+          src="https://images.unsplash.com/photo-1676990995601-807b0682de0d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Mayorista"
+          class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 brightness-80 group-hover:brightness-100 ease-out">
+        <div
+          class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 py-6 group-hover:h-3/5 transition-all duration-500">
+          <h3
+            class="text-white text-xl font-[archivo] font-semibold tracking-wide group-hover:-translate-y-1 transition-transform duration-300">
+            Mayorista</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+  <!--Productos Destacados-->
+  <section
+    class="w-[90%] mx-auto py-16 relative fade-in-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
+    <h2 class="text-4xl font-semibold font-[chaloops] text-center mb-12 text-gray-800">Productos destacados</h2>
+    <!--Carrusel-->
+    <div id="carousel-products" class="overflow-x-auto relative no-scrollbar">
+      <div class="flex transition-transform duration-500 ease-in-out">
+        <!--Producto 1-->
+        <div class="min-w-[70%] sm:min-w-[50%] lg:min-w-[20%] p-4">
+          <!-- Agregamos transición y sombra a TODA la card, haciéndola más táctil -->
+          <div
+            class="flex flex-col h-full min-h-[300px] justify-between items-center text-center font-[archivo] p-4 bg-white rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100 cursor-pointer">
+            <img src="https://images.fravega.com/f500/c499262c1273408b8bac4f5198437c0f.jpg" alt="termo"
+              class="h-40 object-contain transition-transform duration-500 hover:scale-105">
+            <p class="text-sm text-gray-800 pt-3 tracking-wide">Termo de acero inoxidable<br>Contigo 739ml</p>
+            <p class="text-lg pb-3 text-gray-800"><span class="text-gray-500 text-sm line-through pr-1">$89.999</span>
+              $55.999</p>
+            <button
+              class="w-[80%] bg-transparent border border-gray-300 rounded-xl text-center text-sm py-2 hover:bg-torch-red hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out cursor-pointer mt-auto">Añadir
+              al carrito</button>
+          </div>
+        </div>
+        <!--Producto 2-->
+        <div class="min-w-[70%] sm:min-w-[50%] lg:min-w-[20%] p-4">
+          <div
+            class="flex flex-col h-full min-h-[300px] justify-between items-center text-center font-[archivo] p-4 bg-white rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100 cursor-pointer">
+            <img src="https://images.fravega.com/f500/90bdcbb5dc57ce273ba5e4bd0b7df891.jpg" alt="lápices"
+              class="h-40 object-contain transition-transform duration-500 hover:scale-105">
+            <p class="text-sm text-gray-800 pt-3 tracking-wide">Lápices de colores x48<br>Faber-Castell</p>
+            <p class="text-lg pb-3 text-gray-800">$33.400</p>
+            <button
+              class="w-[80%] bg-transparent border border-gray-300 rounded-xl text-center text-sm py-2 hover:bg-torch-red hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out cursor-pointer mt-auto">Añadir
+              al carrito</button>
+          </div>
+        </div>
+        <!--Producto 3-->
+        <div class="min-w-[70%] sm:min-w-[50%] lg:min-w-[20%] p-4">
+          <div
+            class="flex flex-col h-full min-h-[300px] justify-between items-center text-center font-[archivo] p-4 bg-white rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100 cursor-pointer">
+            <img src="https://images.fravega.com/f500/1506436b597b41663207f733fe3d1e43.jpg" alt="calculadora"
+              class="h-40 object-contain transition-transform duration-500 hover:scale-105">
+            <p class="text-sm text-gray-800 pt-3 tracking-wide">Calculadora Científica<br>Casio 82MS2</p>
+            <p class="text-lg pb-3 text-gray-800"><span class="text-gray-500 text-sm line-through pr-1">$29.999</span>
+              $26.999</p>
+            <button
+              class="w-[80%] bg-transparent border border-gray-300 rounded-xl text-center text-sm py-2 hover:bg-torch-red hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out cursor-pointer mt-auto">Añadir
+              al carrito</button>
+          </div>
+        </div>
+        <!--Producto 4-->
+        <div class="min-w-[70%] sm:min-w-[50%] lg:min-w-[20%] p-4">
+          <div
+            class="flex flex-col h-full min-h-[300px] justify-between items-center text-center font-[archivo] p-4 bg-white rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100 cursor-pointer">
+            <img src="https://images.fravega.com/f500/38c7cc9cdf3cab305acd1996d51e7cc7.jpg" alt="mochila"
+              class="h-40 object-contain transition-transform duration-500 hover:scale-105">
+            <p class="text-sm text-gray-800 pt-3 tracking-wide">Mochila de viaje carry on<br>Waggs Rosa</p>
+            <p class="text-lg pb-3 text-gray-800">$79.999</p>
+            <button
+              class="w-[80%] bg-transparent border border-gray-300 rounded-xl text-center text-sm py-2 hover:bg-torch-red hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out cursor-pointer mt-auto">Añadir
+              al carrito</button>
+          </div>
+        </div>
+        <!--Producto 5-->
+        <div class="min-w-[70%] sm:min-w-[50%] lg:min-w-[20%] p-4">
+          <div
+            class="flex flex-col h-full min-h-[300px] justify-between items-center text-center font-[archivo] p-4 bg-white rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100 cursor-pointer">
+            <img src="https://images.fravega.com/f500/5737662c47d6087923c49aa2054e1155.jpg" alt="pizarra"
+              class="h-40 object-contain transition-transform duration-500 hover:scale-105">
+            <p class="text-sm text-gray-800 pt-3 tracking-wide">Pizarra mágica infantil<br>Gadnic con lápiz</p>
+            <p class="text-lg pb-3 text-gray-800"><span class="text-gray-500 text-sm line-through pr-1">$6.999</span>
+              $3.999</p>
+            <button
+              class="w-[80%] bg-transparent border border-gray-300 rounded-xl text-center text-sm py-2 hover:bg-torch-red hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out cursor-pointer mt-auto">Añadir
+              al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="max-w-7xl mx-auto py-16 px-4 md:px-8">
+    <div
+      class="w-full bg-indigo-danielle/5 rounded-[2.5rem] p-10 md:p-16 text-center border border-indigo-danielle/10 fade-in-section opacity-0 translate-y-8 transition-all duration-700 ease-out shadow-sm overflow-hidden relative">
+      <!-- Decoración de fondo simple -->
+      <div class="absolute top-0 right-0 -m-20 w-40 h-40 bg-indigo-danielle/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 -m-20 w-40 h-40 bg-torch-red/10 rounded-full blur-3xl"></div>
+
+      <h2 class="text-3xl md:text-4xl font-semibold font-[chaloops] text-center mb-4 text-gray-800 relative z-10">
+        Suscribite a nuestro Newsletter</h2>
+      <p class="mb-8 font-[archivo] text-gray-700 max-w-2xl mx-auto relative z-10">Recibí las últimas <span
+          class="font-bold">novedades, descuentos y
+          ofertas exclusivas</span> directamente en tu correo electrónico.</p>
+      <form action="#" method="POST" class="flex flex-col sm:flex-row justify-center items-center gap-4 relative z-10">
+        <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required
+          aria-label="Dirección de correo electrónico para el newsletter"
+          class="w-full sm:w-80 px-5 py-3 border border-gray-300/50 bg-white shadow-inner text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-danielle/40 placeholder:text-gray-400 text-gray-700 transition-all">
+        <button type="submit"
+          class="w-full sm:w-auto bg-torch-red text-white font-medium tracking-wide px-8 py-3 rounded-xl cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:shadow-torch-red/30 transition-all duration-300 ease-in-out group flex items-center justify-center gap-2">
+          Suscribirme
+          <i
+            class="ph ph-paper-plane-tilt group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <footer
+    class="bg-indigo-danielle text-gray-200 py-10 font-[archivo] fade-in-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
+    <div class="w-[90%] mx-auto flex flex-col md:flex-row md:justify-between gap-10">
+      <!-- Logo y derechos -->
+      <div class="flex flex-col items-center md:items-start md:w-1/3 xl:mr-100 lg:mr-50 md:mr-20">
+        <img src="/imagenes/Danielle-Blanco.png" alt="Danielle Distribuidora logo" class="w-32 md:w-44 mb-3">
+        <p class="text-xs text-gray-200/70 text-center md:text-left leading-tight">
+          © 2024 Danielle Distribuidora.<br>
+          Todos los derechos reservados.
+        </p>
+      </div>
+      <!-- Contacto y redes -->
+      <div
+        class="flex flex-col md:w-2/3 md:flex-row md:justify-between md:items-start md:text-left items-center text-center gap-8">
+        <div>
+          <h3 class="text-xl md:text-2xl font-[chaloops] tracking-wider mb-3">Contacto</h3>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2">
+              <i class="ph ph-envelope md:text-xl text-sm"></i>
+              <a href="mailto:danielledistribuidora@gmail.com" target="_blank"
+                class="hover:underline">danielledistribuidora@gmail.com</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="ph ph-map-pin-line md:text-xl text-sm"></i>
+              <a href="https://www.google.com/maps/@-27.475577,-58.7950349,3a,75y,12.06h,90t/data=!3m7!1e1!3m5!1svfL7CLszB8hG6BepVXP_XQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DvfL7CLszB8hG6BepVXP_XQ%26yaw%3D12.06!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank" class="hover:underline">Av. Raúl Alfonsín 4501 Corrientes Capital</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl md:text-2xl font-[chaloops] tracking-wider mb-3">Redes</h3>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2">
+              <i class="ph ph-instagram-logo md:text-xl text-sm"></i>
+              <a href="https://www.instagram.com/distribuidora_danielle?utm_source=ig_web_button_share_sheet&igsh=Z2RoczN4bzRmdW55dG9kZ3V0b2R1c2VybmFtZQ%3D%3D"
+                target="_blank" class="hover:underline">distribuidora_danielle</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="ph ph-facebook-logo md:text-xl text-sm"></i>
+              <a href="https://www.facebook.com/profile.php?id=100039214491299" target="_blank"
+                class="hover:underline">Danielle Distribuidora</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="ph ph-whatsapp-logo md:text-xl text-sm"></i>
+              <a href="https://api.whatsapp.com/send?phone=543794945292" target="_blank"
+                class="hover:underline">3794-945292</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById("main-header");
+
+    window.addEventListener("scroll", () => {
+      if (!menuOpen) {
+        if (lastScrollY < window.scrollY && window.scrollY > 80) {
+          // Bajando y pasados 80px: Ocultar y volver semi-trasparente para el regreso
+          header.classList.add("-translate-y-full");
+          header.classList.replace("bg-white", "bg-white/80");
+          header.classList.add("backdrop-blur-md");
+        } else {
+          // Subiendo: Mostrar
+          header.classList.remove("-translate-y-full");
+          // Si estamos hasta arriba de todo, volvemos a blanco sólido
+          if (window.scrollY < 20) {
+            header.classList.replace("bg-white/80", "bg-white");
+            header.classList.remove("backdrop-blur-md");
+          }
+        }
+      }
+      lastScrollY = window.scrollY;
+    });
+
+    // Toggle Mobile Menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    let menuOpen = false;
+
+    menuBtn.addEventListener("click", () => {
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+        document.body.classList.add("overflow-hidden");
+        menuBtn.innerHTML = '<i class="ph ph-x"></i>';
+        menuBtn.setAttribute("aria-expanded", "true");
+        menuBtn.setAttribute("aria-label", "Cerrar menú");
+        menuBtn.classList.replace('text-gray-700', 'text-white');
+        menuBtn.classList.replace('hover:text-indigo-danielle', 'hover:text-gray-200');
+        // Quitar blur si estamo en menu
+        header.classList.replace("bg-white/80", "bg-white");
+        header.classList.remove("backdrop-blur-md", "shadow-md");
+      } else {
+        mobileMenu.classList.remove("translate-x-0");
+        mobileMenu.classList.add("translate-x-full");
+        document.body.classList.remove("overflow-hidden");
+        menuBtn.innerHTML = '<i class="ph ph-list"></i>';
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Abrir menú");
+        menuBtn.classList.replace('text-white', 'text-gray-700');
+        menuBtn.classList.replace('hover:text-gray-200', 'hover:text-indigo-danielle');
+        header.classList.add("shadow-md");
+      }
+    });
+
+    //Carrusel
+    const carousel = document.getElementById('carousel');
+    const nextBtn = document.getElementById('next');
+    const prevBtn = document.getElementById('prev');
+
+    nextBtn.addEventListener('click', () => {
+      const card = carousel.querySelector('a');
+      const cardWidth = card.offsetWidth + 24; // 24px es el gap
+      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const card = carousel.querySelector('a');
+      const cardWidth = card.offsetWidth + 24;
+      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    // Auto-slide cada 4 segundos
+    const carouselProducts = document.getElementById("carousel-products");
+    let scrollAmount = 0;
+
+    setInterval(() => {
+      const item = carouselProducts.querySelector("div > div");
+      const itemWidth = item.offsetWidth + 16; // suma el gap (ajustalo si usás otro)
+      const maxScroll = carouselProducts.scrollWidth - carouselProducts.clientWidth;
+
+      scrollAmount += itemWidth;
+
+      if (scrollAmount >= maxScroll) {
+        scrollAmount = 0;
+      }
+
+      carouselProducts.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }, 6000);
+
+
+
+    // Intersection Observer para Fade-In
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section, .fade-in-hero').forEach((section) => {
+      // Small timeout to allow initial render before starting observing (specially for hero)
+      setTimeout(() => {
+        observer.observe(section);
+      }, 50);
+    });
+
+  </script>
+</body>
+
+</html>
+
+
+
+<!--🛒 Wireframe de la Página de Inicio para Danielle Distribuidora
+1-Encabezado (Header):
+  Logo de la empresa.
+  Menú de navegación con enlaces a las secciones principales: Inicio, Productos, Ofertas, Contacto.
+  Iconos de búsqueda y carrito de compras.
+
+2-Banner Principal (Hero):
+  Imagen destacada de productos o promociones actuales.
+  Texto llamativo que resalte la propuesta de valor.
+  Botón de llamada a la acción (CTA) como "Ver Productos" o "Comprar Ahora".
+
+3-Sección de Categorías:
+  Muestra de las principales categorías de productos, como Papelería, Juguetería, Librería, etc.
+  Cada categoría con una imagen representativa y enlace a su página correspondiente.
+
+4-Productos Destacados:
+  Galería de productos en oferta o más vendidos.
+  Información básica: imagen, nombre, precio y botón de "Agregar al carrito".
+
+5-Testimonios o Reseñas:
+  Comentarios de clientes satisfechos para generar confianza.
+
+6-Formulario de Suscripción:
+  Invitación a los usuarios a suscribirse al boletín para recibir novedades y ofertas.
+
+7-Pie de Página (Footer):
+  Información de contacto: dirección, teléfono, correo electrónico.
+  Enlaces a redes sociales.
+  Políticas de privacidad, términos y condiciones.-->
