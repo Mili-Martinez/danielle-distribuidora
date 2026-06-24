@@ -1,5 +1,7 @@
 # Danielle Distribuidora — Identity Redesign & Digital Strategy
 
+<img src="imagenes/danielle-hero.jpg" alt="Distribuidora Danielle" width="100%">
+
 This project represents the comprehensive transformation of Danielle Distribuidora, an established wholesale stationery brand, moving towards a modern, flexible, and digitally functional identity.
 
 🎯 The Challenge
