@@ -22,3 +22,11 @@ As an end-to-end solution, I redesigned the website from scratch, optimizing its
 * **Design & Systems:** Figma, Adobe Illustrator
 * **Development:** HTML5, CSS3, Tailwind CSS 4, Vanilla JavaScript
 * **Iconography:** Phosphor Icons
+
+🚀 Live Demo
+✨ Explore the live experience here: [Danielle Distribuidora — Live Demo](https://mili-martinez.github.io/danielle-distribuidora/)
+
+
+
+
+
