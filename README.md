@@ -1,25 +1,24 @@
-# Rediseño de Identidad y Estrategia Digital – Danielle Distribuidora
+# Danielle Distribuidora — Identity Redesign & Digital Strategy
 
-Este proyecto representa la transformación integral de **Danielle Distribuidora**, una librería mayorista con trayectoria, hacia una identidad moderna, flexible y digitalmente funcional.
+This project represents the comprehensive transformation of Danielle Distribuidora, an established wholesale stationery brand, moving towards a modern, flexible, and digitally functional identity.
 
-## 🎯 El Desafío
-En pleno proceso de expansión y apertura de nuevos locales, el objetivo fue modernizar una imagen rígida y anticuada sin perder la esencia reconocida por sus clientes. La meta: transformar la marca en una identidad divertida, creativa y cercana, capaz de hablarle tanto al cliente mayorista como al público minorista.
+🎯 The Challenge
+Amidst an expansion phase and the opening of new retail locations, the goal was to modernize a rigid, dated brand image without losing its market recognition. The objective: transform the brand into a vibrant, creative, and approachable identity capable of engaging both wholesale clients and retail consumers.
 
-## 🎨 Identidad Visual y Concepto
-- **Evolución de la marca:** Rediseño del icónico triángulo para aportar dinamismo y modernidad, convirtiéndolo en el eje de un sistema visual flexible.
-- **Sistema de Diseño:** Definición de una nueva paleta de colores y selección tipográfica descontracturada y alegre, manteniendo la solidez profesional requerida por el sector.
-- **Recursos Orgánicos:** Creación de elementos visuales con formas libres para reforzar una vibra creativa y no estructurada.
+💻 Digital Initiative (UX/UI & Front-End Implementation)
+As an end-to-end solution, I redesigned the website from scratch, optimizing its architecture for the digital ecosystem. The project followed a "Design in the Browser" workflow, allowing active iteration directly on code based on real user experience:
 
-## 💻 Iniciativa Digital (UX/UI & Maquetación)
-Como propuesta integral, rediseñé el sitio web desde cero, optimizando la estructura para el entorno digital. El proyecto fue desarrollado mediante **"Design in the Browser"** (diseño directo en código), permitiendo iterar sobre la experiencia real del usuario:
+* **Structure & Hierarchy:** A conversion-focused landing page prioritizing visual clarity, featuring intuitive categorization across core business sectors (Stationery, Toys, Wholesale).
+* **Responsive Architecture:** Engineered with a mobile-first approach, ensuring the brand identity retains its visual impact and layout integrity across all viewport sizes.
+* **Custom Maquetation with Tailwind CSS:** Built entirely from scratch without pre-made templates, prioritizing highly optimized code and a unique digital aesthetic.
+* **Fluid Interactions:** Technical refinement utilizing AI tools (Antigravity) to achieve smooth transitions and high-quality fade-in entry effects.
 
-- **Estructura y Jerarquía:** Landing page enfocada en la claridad visual, con categorización intuitiva de las áreas clave (Librería, Juguetería, Mayorista).
-- **Enfoque Responsive:** Experiencia pensada *mobile-first*, asegurando que la marca mantenga su impacto en cualquier tamaño de pantalla.
-- **Maquetación Custom con Tailwind CSS:** Desarrollo desde cero sin plantillas, priorizando un código optimizado y una estética única.
-- **Interacciones y Fluidez:** Refinamiento técnico mediante IA (Antigravity) para lograr transiciones suaves y efectos de entrada (*fade-ins*) de alta calidad.
+🎨 Visual Identity & Concept
+* **Brand Evolution:** Redesigned the iconic triangle asset to inject dynamism and modernity, turning it into the anchor of a flexible visual system.
+* **Design System:** Defined a cohesive color palette and a cheerful, unconstrained typographic selection, perfectly balancing programmatic solidness with brand approachability.
+* **Organic Assets:** Created custom free-form visual elements to reinforce a creative, non-structured studio vibe.
 
-## 🛠️ Tecnologías
-- HTML5 / CSS3
-- Tailwind CSS 4
-- JavaScript (Vanilla)
-- Phosphor Icons
+🛠️ Tech Stack & Tools
+* **Design & Systems:** Figma, Adobe Illustrator
+* **Development:** HTML5, CSS3, Tailwind CSS 4, Vanilla JavaScript
+* **Iconography:** Phosphor Icons
